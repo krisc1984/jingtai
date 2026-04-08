@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宁波 - 武汉旅游行程规划 2026 年 4 月 28 日</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ========================================
+           SpaceX Design System
+           ======================================== */
+
+        :root {
+            --space-black: #000000;
+            --spectral-white: #f0f0fa;
+            --ghost-bg: rgba(240, 240, 250, 0.1);
+            --ghost-border: rgba(240, 240, 250, 0.35);
+            --dark-overlay: rgba(0, 0, 0, 0.7);
+            --primary-color: #e11d48;
+            --secondary-color: #f59e0b;
+            --accent-color: #8b5cf6;
+            --success-color: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
+            background-color: var(--space-black);
+            color: var(--spectral-white);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background Image Layer */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-overlay);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            padding: 60px 40px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--spectral-white);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cover:hover::before {
+            opacity: 0.5;
+        }
+
+        .cover h1 {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            margin-bottom: 15px;
+            text-shadow: none;
+        }
+
+        .cover .subtitle {
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.17px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .cover .tagline {
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        .info-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            background: rgba(240, 240, 250, 0.05);
+            border: 1px solid var(--ghost-border);
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item i {
+            margin-right: 8px;
+        }
+
+        .section {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            border-radius: 4px;
+            padding: 35px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            color: var(--spectral-white);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--ghost-border);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--spectral-white);
+            opacity: 0.7;
+        }
+
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .transport-card {
+            background: rgba(240, 240, 250, 0.05);
+            border: 1px solid var(--ghost-border);
+            border-left: 3px solid var(--spectral-white);
+            border-radius: 4px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .transport-card:hover {
+            background: rgba(240, 240, 250, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .transport-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .transport-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .transport-name {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            color: var(--spectral-white);
+        }
+
+        .transport-info {
+            margin-bottom: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--ghost-border);
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--spectral-white);
+            opacity: 0.6;
+            font-size: 11px;
+        }
+
+        .info-value {
+            color: var(--spectral-white);
+            opacity: 0.9;
+            font-size: 12px;
+        }
+
+        .price-tag {
+            background: var(--success-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .booking-btn {
+            display: inline-block;
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .booking-btn:hover {
+            background: rgba(240, 240, 250, 0.15);
+            border-color: var(--spectral-white);
+            transform: translateY(-2px);
+        }
+
+        .itinerary-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .itinerary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--ghost-border);
+        }
+
+        .day-card {
+            background: rgba(240, 240, 250, 0.05);
+            border: 1px solid var(--ghost-border);
+            border-left: 3px solid var(--spectral-white);
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 30px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--space-black);
+            border: 2px solid var(--ghost-border);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .day-badge {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .day-title {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            color: var(--spectral-white);
+        }
+
+        .schedule-item {
+            background: rgba(240, 240, 250, 0.03);
+            border: 1px solid var(--ghost-border);
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .schedule-time {
+            color: var(--spectral-white);
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-time i {
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .schedule-activity {
+            color: var(--spectral-white);
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .schedule-location {
+            color: var(--spectral-white);
+            font-size: 11px;
+            opacity: 0.6;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .schedule-tips {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(240, 240, 250, 0.05);
+            border-radius: 4px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .schedule-tips p {
+            font-size: 12px;
+            color: var(--spectral-white);
+            opacity: 0.8;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .schedule-tips i {
+            color: var(--secondary-color);
+            margin-top: 3px;
+        }
+
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .ticket-card {
+            background: rgba(240, 240, 250, 0.05);
+            border: 1px solid var(--ghost-border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .ticket-card:hover {
+            background: rgba(240, 240, 250, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .ticket-header {
+            background: var(--ghost-bg);
+            border-bottom: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            padding: 20px;
+        }
+
+        .ticket-name {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            margin-bottom: 5px;
+        }
+
+        .ticket-rating {
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .ticket-body {
+            padding: 20px;
+        }
+
+        .ticket-info {
+            margin-bottom: 15px;
+        }
+
+        .ticket-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--ghost-border);
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ticket-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .ticket-price {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--spectral-white);
+            text-align: center;
+            padding: 15px;
+            background: rgba(240, 240, 250, 0.05);
+            border-radius: 4px;
+            margin-bottom: 15px;
+            letter-spacing: 0.96px;
+        }
+
+        .ticket-booking {
+            display: block;
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .ticket-booking:hover {
+            background: rgba(240, 240, 250, 0.15);
+            border-color: var(--spectral-white);
+            transform: translateY(-2px);
+        }
+
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .budget-table th,
+        .budget-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--ghost-border);
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .budget-table thead {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+        }
+
+        .budget-table thead th {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+        }
+
+        .budget-table tbody tr:hover {
+            background: rgba(240, 240, 250, 0.05);
+        }
+
+        .budget-total {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            padding: 25px;
+            border-radius: 4px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .budget-total h3 {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            color: var(--spectral-white);
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            margin-bottom: 10px;
+        }
+
+        .budget-total .amount {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--spectral-white);
+            letter-spacing: 1px;
+        }
+
+        .tip-box {
+            background: rgba(240, 240, 250, 0.05);
+            border: 1px solid var(--ghost-border);
+            border-left: 3px solid var(--secondary-color);
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-box h4 {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            color: var(--spectral-white);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-box ul {
+            list-style: none;
+            padding-left: 30px;
+        }
+
+        .tip-box ul li {
+            position: relative;
+            margin-bottom: 10px;
+            color: var(--spectral-white);
+            opacity: 0.8;
+            line-height: 1.7;
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tip-box ul li::before {
+            content: '💡';
+            position: absolute;
+            left: -25px;
+        }
+
+        .alert-box {
+            background: rgba(240, 240, 250, 0.05);
+            border: 1px solid var(--ghost-border);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .alert-box h4 {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            color: var(--spectral-white);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-box ul {
+            list-style: none;
+            padding-left: 30px;
+        }
+
+        .alert-box ul li {
+            position: relative;
+            margin-bottom: 10px;
+            color: var(--spectral-white);
+            opacity: 0.8;
+            line-height: 1.7;
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .alert-box ul li::before {
+            content: '⚠️';
+            position: absolute;
+            left: -25px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--ghost-border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--spectral-white);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .cover h1 {
+                font-size: 1.6em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .transport-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .itinerary-timeline {
+                padding-left: 30px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Background Layers -->
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- 封面页 -->
+        <div class="cover animate-in">
+            <h1><i class="fas fa-plane-departure"></i> 宁波 - 武汉旅游行程规划</h1>
+            <p class="subtitle">2026 年 4 月 28 日出发 | 4 天 3 晚深度游</p>
+            <p class="tagline">黄鹤楼 · 东湖樱花 · 湖北省博物馆 · 热干面</p>
+
+            <div class="info-bar">
+                    <div class="info-item">
+                        <i class="fas fa-calendar-alt"></i> 4 月 28 日 -5 月 1 日
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-users"></i> 2 人出行
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-cloud-sun"></i> 樱花季末期
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-yen-sign"></i> 人均约¥2800
+                    </div>
+                </div>
+        </div>
+
+        <!-- 交通方案 -->
+        <div class="section animate-in delay-1">
+            <h2 class="section-title"><i class="fas fa-transporter"></i> 交通方案（宁波 ⇌ 武汉）</h2>
+            
+            <div class="transport-grid">
+                <!-- 飞机方案 -->
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon"><i class="fas fa-plane"></i></div>
+                        <div class="transport-name">飞机方案（强烈推荐）</div>
+                    </div>
+                    <div class="transport-info">
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-route"></i> 航线</span>
+                            <span class="info-value">宁波栎社机场 → 武汉天河机场</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-clock"></i> 飞行时间</span>
+                            <span class="info-value">约 1 小时 40 分钟（直飞）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-exchange-alt"></i> 中转</span>
+                            <span class="info-value">直飞航班</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-yen-sign"></i> 参考价格</span>
+                            <span class="price-tag">¥240-400/人</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-suitcase"></i> 行李</span>
+                            <span class="info-value">20kg 托运行李</span>
+                        </div>
+                    </div>
+                    <div class="tip-box" style="margin-top: 15px;">
+                        <p style="margin: 0;"><i class="fas fa-thumbs-up"></i> <strong>强烈推荐：</strong>宁波到武汉有直飞航班，飞行时间仅 1 小时 40 分钟，性价比极高！</p>
+                    </div>
+                    <a href="https://m.ctrip.com/html5/flight/NGB-WUH-day-1.html" target="_blank" class="booking-btn">
+                        <i class="fas fa-ticket-alt"></i> 携程预订机票
+                    </a>
+                </div>
+
+                <!-- 高铁方案 -->
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon"><i class="fas fa-train"></i></div>
+                        <div class="transport-name">高铁方案</div>
+                    </div>
+                    <div class="transport-info">
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-route"></i> 路线</span>
+                            <span class="info-value">宁波站 → 武汉站/汉口站</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-clock"></i> 行程时间</span>
+                            <span class="info-value">约 5.5-6.5 小时</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-exchange-alt"></i> 中转</span>
+                            <span class="info-value">部分车次直达</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-yen-sign"></i> 参考价格</span>
+                            <span class="price-tag">¥357-450/人</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label"><i class="fas fa-chair"></i> 座位</span>
+                            <span class="info-value">二等座/一等座</span>
+                        </div>
+                    </div>
+                    <div class="tip-box" style="margin-top: 15px;">
+                        <p style="margin: 0;"><i class="fas fa-info-circle"></i> <strong>推荐车次：</strong>D656（宁波 07:09-汉口 13:33）6 小时 24 分</p>
+                    </div>
+                    <a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank" class="booking-btn">
+                        <i class="fas fa-ticket-alt"></i> 12306 预订高铁
+                    </a>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 25px;">
+                <h4><i class="fas fa-exclamation-circle"></i> 重要提醒</h4>
+                <ul>
+                    <li><strong>4 月 28 日出行提示：</strong>4 月底为旅游旺季，机票/高铁票需提前 7-10 天预订</li>
+                    <li><strong>机场交通：</strong>武汉天河机场距市区约 25km，有地铁 2 号线直达，打车约¥60-80</li>
+                    <li><strong>高铁站交通：</strong>武汉站有地铁 4 号线/5 号线，汉口站有地铁 2 号线，均可达市区</li>
+                    <li><strong>推荐选择：</strong>飞机性价比最高（直飞仅 1 小时 40 分，¥240 起），时间灵活选高铁</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 详细行程 -->
+        <div class="section animate-in delay-2">
+            <h2 class="section-title"><i class="fas fa-route"></i> 详细行程安排</h2>
+            
+            <div class="itinerary-timeline">
+                <!-- Day 1 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 1</span>
+                        <span class="day-title">4 月 28 日（周二）宁波 → 武汉 + 户部巷美食</span>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 08:00 - 09:30
+                        </div>
+                        <div class="schedule-activity">宁波市区出发前往栎社机场</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 宁波栎社国际机场
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 09:30 - 11:10
+                        </div>
+                        <div class="schedule-activity">乘坐直飞航班前往武汉</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-plane"></i> 航班参考：宁波 - 武汉天河（约 1 小时 40 分）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 11:10 - 12:30
+                        </div>
+                        <div class="schedule-activity">抵达武汉天河机场，前往酒店办理入住</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-hotel"></i> 建议住宿：武昌区（近黄鹤楼/户部巷）或汉口江汉路
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 12:30 - 14:00
+                        </div>
+                        <div class="schedule-activity">午餐（户部巷小吃）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-utensils"></i> 推荐：热干面、三鲜豆皮、面窝
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 14:00 - 16:00
+                        </div>
+                        <div class="schedule-activity">休息调整，适应环境</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-bed"></i> 酒店休息
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 16:00 - 18:00
+                        </div>
+                        <div class="schedule-activity">游览黄鹤楼（登楼远眺长江）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 黄鹤楼（门票¥65，地铁 5 号线司门口黄鹤楼站）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 18:30 - 20:30
+                        </div>
+                        <div class="schedule-activity">晚餐 + 游览长江大桥夜景</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-utensils"></i> 推荐：武昌鱼、洪湖藕汤
+                        </div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> <strong>游玩小贴士：</strong>第一天行程较轻松。黄鹤楼建议下午 16:00 左右游览，可以欣赏日落和夜景。户部巷小吃很多，建议少量多样品尝。</p>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 2</span>
+                        <span class="day-title">4 月 29 日（周三）湖北省博物馆 + 东湖樱花园</span>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 08:30 - 09:30
+                        </div>
+                        <div class="schedule-activity">酒店出发前往湖北省博物馆</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-subway"></i> 地铁 8 号线省博湖北日报站
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 09:30 - 12:30
+                        </div>
+                        <div class="schedule-activity">参观湖北省博物馆（越王勾践剑、曾侯乙编钟）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 湖北省博物馆（免费，需提前预约）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 12:30 - 14:00
+                        </div>
+                        <div class="schedule-activity">午餐（楚河汉街）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-utensils"></i> 推荐：楚河汉街美食广场
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 14:30 - 18:00
+                        </div>
+                        <div class="schedule-activity">游览东湖樱花园（晚樱品种）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 东湖樱花园（门票¥60，4 月底为晚花期）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 18:30 - 20:30
+                        </div>
+                        <div class="schedule-activity">晚餐 + 楚河汉街夜景</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-utensils"></i> 推荐：湖北菜餐厅
+                        </div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> <strong>游玩小贴士：</strong>湖北省博物馆需提前在公众号预约，周一闭馆。编钟表演每天多场（¥30/人）。东湖樱花园 4 月底为晚花期，仍可观赏。</p>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 3</span>
+                        <span class="day-title">4 月 30 日（周四）武汉大学 + 昙华林 + 江汉路</span>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 08:30 - 11:30
+                        </div>
+                        <div class="schedule-activity">游览武汉大学（樱花大道、老建筑）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 武汉大学（免费，需预约，地铁 2 号线街道口站）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 11:30 - 13:00
+                        </div>
+                        <div class="schedule-activity">午餐（广埠屯美食街）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-utensils"></i> 推荐：湖北小吃
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 14:00 - 16:30
+                        </div>
+                        <div class="schedule-activity">游览昙华林文艺街区</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 昙华林（免费，地铁 2 号线螃蟹岬站）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 17:00 - 20:00
+                        </div>
+                        <div class="schedule-activity">游览江汉路步行街 + 晚餐</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 江汉路步行街（地铁 2 号线江汉路站）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 20:00 - 21:30
+                        </div>
+                        <div class="schedule-activity">江汉关博物馆夜景（可选）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 江汉关（免费，需预约）
+                        </div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> <strong>游玩小贴士：</strong>武汉大学 4 月底樱花已谢，但校园建筑很美。昙华林适合拍照打卡，有很多文艺小店。江汉路是武汉最繁华的商业街。</p>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 4</span>
+                        <span class="day-title">5 月 1 日（周五）武汉 → 宁波返程</span>
+                    </div>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 08:00 - 09:00
+                        </div>
+                        <div class="schedule-activity">酒店早餐，整理行李，办理退房</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-hotel"></i> 酒店
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 09:00 - 11:00
+                        </div>
+                        <div class="schedule-activity">游览古德寺（可选）或购买特产</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-map-marker-alt"></i> 古德寺（门票¥15，地铁 1 号线头道街站）
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 11:00 - 12:30
+                        </div>
+                        <div class="schedule-activity">最后午餐（热干面告别餐）</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-utensils"></i> 推荐：蔡林记热干面
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 13:00 - 14:00
+                        </div>
+                        <div class="schedule-activity">前往武汉天河机场/武汉站</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-plane"></i> 机场/高铁站
+                        </div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i> 14:00 - 
+                        </div>
+                        <div class="schedule-activity">乘坐飞机/高铁返回宁波</div>
+                        <div class="schedule-location">
+                            <i class="fas fa-plane"></i> 返程
+                        </div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> <strong>返程提示：</strong>建议预订 16:00 以后的航班/高铁，预留充足时间前往机场/车站。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 景点门票预订 -->
+        <div class="section animate-in delay-3">
+            <h2 class="section-title"><i class="fas fa-ticket-alt"></i> 景点门票预订信息</h2>
+            
+            <div class="ticket-grid">
+                <!-- 黄鹤楼 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">黄鹤楼</div>
+                        <div class="ticket-rating">⭐⭐⭐⭐⭐ 5A 级景区</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info">
+                            <div class="ticket-info-item">
+                                <span>门票价格</span>
+                                <strong>¥65/人</strong>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>开放时间</span>
+                                <span>08:30-17:00</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>游玩时长</span>
+                                <span>2-3 小时</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>预约提前</span>
+                                <span>3 天</span>
+                            </div>
+                        </div>
+                        <div class="ticket-price">¥65/人</div>
+                        <a href="https://touch.piao.qunar.com/touch/detail.htm?id=12485" target="_blank" class="ticket-booking">
+                            <i class="fas fa-mobile-alt"></i> 去哪儿网预订
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 湖北省博物馆 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">湖北省博物馆</div>
+                        <div class="ticket-rating">⭐⭐⭐⭐⭐ 国家一级博物馆</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info">
+                            <div class="ticket-info-item">
+                                <span>门票价格</span>
+                                <strong>免费</strong>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>开放时间</span>
+                                <span>09:00-17:00</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>游玩时长</span>
+                                <span>3-5 小时</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>闭馆</span>
+                                <span>周一闭馆</span>
+                            </div>
+                        </div>
+                        <div class="ticket-price">免费（需预约）</div>
+                        <a href="https://hk.trip.com/travel-guide/attraction/wuhan/hubei-provincial-museum-77591/" target="_blank" class="ticket-booking">
+                            <i class="fas fa-mobile-alt"></i> 公众号预约
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 东湖樱花园 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">东湖樱花园</div>
+                        <div class="ticket-rating">⭐⭐⭐⭐ 赏花胜地</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info">
+                            <div class="ticket-info-item">
+                                <span>门票价格</span>
+                                <strong>¥60/人</strong>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>开放时间</span>
+                                <span>08:30-17:30</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>游玩时长</span>
+                                <span>2-3 小时</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>花期</span>
+                                <span>4 月底为晚花期</span>
+                            </div>
+                        </div>
+                        <div class="ticket-price">¥60/人</div>
+                        <a href="https://m.wh.bendibao.com/tour/jingdianbao/" target="_blank" class="ticket-booking">
+                            <i class="fas fa-mobile-alt"></i> 武汉本地宝预订
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 武汉大学 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">武汉大学</div>
+                        <div class="ticket-rating">⭐⭐⭐⭐ 最美校园</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info">
+                            <div class="ticket-info-item">
+                                <span>门票价格</span>
+                                <strong>免费</strong>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>开放时间</span>
+                                <span>08:00-18:00</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>游玩时长</span>
+                                <span>2-3 小时</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>预约</span>
+                                <span>需提前预约</span>
+                            </div>
+                        </div>
+                        <div class="ticket-price">免费（需预约）</div>
+                        <a href="#" class="ticket-booking" style="background: #ccc; cursor: not-allowed;">
+                            <i class="fas fa-check"></i> 公众号预约
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 昙华林 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">昙华林</div>
+                        <div class="ticket-rating">⭐⭐⭐⭐ 文艺街区</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info">
+                            <div class="ticket-info-item">
+                                <span>门票价格</span>
+                                <strong>免费</strong>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>开放时间</span>
+                                <span>全天</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>游玩时长</span>
+                                <span>2-3 小时</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>特色</span>
+                                <span>文艺小店 + 历史建筑</span>
+                            </div>
+                        </div>
+                        <div class="ticket-price">免费</div>
+                        <a href="#" class="ticket-booking" style="background: #ccc; cursor: not-allowed;">
+                            <i class="fas fa-check"></i> 免费开放
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 古德寺 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">古德寺</div>
+                        <div class="ticket-rating">⭐⭐⭐⭐ 特色寺庙</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info">
+                            <div class="ticket-info-item">
+                                <span>门票价格</span>
+                                <strong>¥15/人</strong>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>开放时间</span>
+                                <span>08:00-16:30</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>游玩时长</span>
+                                <span>1-2 小时</span>
+                            </div>
+                            <div class="ticket-info-item">
+                                <span>特色</span>
+                                <span>印缅风格建筑</span>
+                            </div>
+                        </div>
+                        <div class="ticket-price">¥15/人</div>
+                        <a href="https://m.wh.bendibao.com/tour/jingdianbao/" target="_blank" class="ticket-booking">
+                            <i class="fas fa-mobile-alt"></i> 武汉本地宝预订
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 预算明细 -->
+        <div class="section animate-in delay-3">
+            <h2 class="section-title"><i class="fas fa-calculator"></i> 预算明细（2 人）</h2>
+            
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>项目</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>小计</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-plane"></i> 机票（往返）</td>
+                        <td>¥320/人</td>
+                        <td>2 人往返</td>
+                        <td>¥1280</td>
+                        <td>宁波 - 武汉直飞（往返）</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-hotel"></i> 住宿（3 晚）</td>
+                        <td>¥350/晚</td>
+                        <td>3 晚</td>
+                        <td>¥1050</td>
+                        <td>舒适型酒店（武昌区/江汉路）</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-ticket-alt"></i> 景点门票</td>
+                        <td>¥140/人</td>
+                        <td>2 人</td>
+                        <td>¥280</td>
+                        <td>黄鹤楼 + 东湖樱花园 + 古德寺</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-utensils"></i> 餐饮</td>
+                        <td>¥120/天</td>
+                        <td>4 天</td>
+                        <td>¥480</td>
+                        <td>热干面 + 湖北菜 + 小吃</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-taxi"></i> 市内交通</td>
+                        <td>¥80/天</td>
+                        <td>4 天</td>
+                        <td>¥320</td>
+                        <td>地铁 + 公交 + 打车</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-shopping-bag"></i> 购物/其他</td>
+                        <td>¥400</td>
+                        <td>1 次</td>
+                        <td>¥400</td>
+                        <td>特产 + 纪念品</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="budget-total">
+                <h3><i class="fas fa-yen-sign"></i> 总预算（2 人）</h3>
+                <div class="amount">¥3,810</div>
+                <p style="color: #78350f; margin-top: 10px;">人均约 ¥1,905</p>
+            </div>
+
+            <div class="tip-box" style="margin-top: 25px;">
+                <h4><i class="fas fa-info-circle"></i> 预算说明</h4>
+                <ul>
+                    <li>机票价格浮动较大，4 月底为旅游旺季，建议提前 7-10 天预订</li>
+                    <li>住宿选择武昌区（近黄鹤楼）或汉口江汉路，交通便利</li>
+                    <li>餐饮费用包含热干面、湖北菜等特色餐食</li>
+                    <li>武汉地铁发达，大部分景点可地铁到达</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 重要提醒 -->
+        <div class="section animate-in delay-3">
+            <h2 class="section-title"><i class="fas fa-bell"></i> 重要提醒</h2>
+            
+            <div class="alert-box">
+                <h4><i class="fas fa-exclamation-triangle"></i> 出行前必知</h4>
+                <ul>
+                    <li><strong>门票预约：</strong>湖北省博物馆需提前 3-5 天预约，武汉大学需提前预约，黄鹤楼建议提前 3 天</li>
+                    <li><strong>樱花花期：</strong>4 月底武汉大学樱花已谢，东湖樱花园有晚樱品种可观赏</li>
+                    <li><strong>天气情况：</strong>4 月底武汉气温约 18-28°C，建议穿春秋装，带薄外套</li>
+                    <li><strong>交通预订：</strong>机票/高铁票需提前 7-10 天预订，4 月底为旅游旺季</li>
+                    <li><strong>住宿建议：</strong>推荐武昌区（近黄鹤楼/户部巷）或汉口江汉路，地铁沿线</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <h4><i class="fas fa-suitcase"></i> 行李准备清单</h4>
+                <ul>
+                    <li>证件：身份证、学生证（如有，部分景点有优惠）</li>
+                    <li>衣物：春秋装、薄外套、舒适步行鞋</li>
+                    <li>电子：充电宝、相机、充电器</li>
+                    <li>药品：感冒药、肠胃药、创可贴（武汉菜偏辣）</li>
+                    <li>其他：防晒霜、墨镜、雨伞</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <h4><i class="fas fa-phone"></i> 紧急联系方式</h4>
+                <ul>
+                    <li>武汉旅游咨询热线：027-12345</li>
+                    <li>湖北省博物馆咨询：+86-27-86716789</li>
+                    <li>黄鹤楼咨询：027-88877332</li>
+                    <li>全国铁路客服：12306</li>
+                    <li>宁波栎社机场：0574-81899999</li>
+                    <li>武汉天河机场：027-96577</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 预订链接汇总 -->
+        <div class="section animate-in delay-3">
+            <h2 class="section-title"><i class="fas fa-link"></i> 快速预订链接汇总</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <a href="https://m.ctrip.com/html5/flight/NGB-WUH-day-1.html" target="_blank" class="booking-btn" style="display: block;">
+                    <i class="fas fa-plane"></i> 携程订机票
+                </a>
+                <a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank" class="booking-btn" style="display: block;">
+                    <i class="fas fa-train"></i> 12306 订高铁
+                </a>
+                <a href="https://touch.piao.qunar.com/touch/detail.htm?id=12485" target="_blank" class="booking-btn" style="display: block;">
+                    <i class="fas fa-ticket-alt"></i> 黄鹤楼门票
+                </a>
+                <a href="https://m.wh.bendibao.com/tour/jingdianbao/" target="_blank" class="booking-btn" style="display: block;">
+                    <i class="fas fa-map-marker-alt"></i> 武汉景点门票
+                </a>
+                <a href="https://www.ctrip.com/" target="_blank" class="booking-btn" style="display: block;">
+                    <i class="fas fa-hotel"></i> 携程订酒店
+                </a>
+                <a href="https://hk.trip.com/travel-guide/attraction/wuhan/hubei-provincial-museum-77591/" target="_blank" class="booking-btn" style="display: block;">
+                    <i class="fas fa-landmark"></i> 湖北省博物馆预约
+                </a>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p><i class="fas fa-file-alt"></i> 行程规划生成时间：2026 年 4 月 7 日</p>
+            <p style="margin-top: 10px;">
+                <i class="fas fa-map-marked-alt"></i> 保存位置：F:/Obsidian/my-vault/50_资源/Newsletters/宁波 - 武汉旅游行程规划 2026 年 4 月 28 日.html
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                <i class="fas fa-info-circle"></i> 数据来源：携程/12306/武汉文旅局官方信息 | 价格仅供参考，以实际预订为准
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

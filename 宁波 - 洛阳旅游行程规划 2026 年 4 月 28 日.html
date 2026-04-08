@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宁波 - 洛阳旅游行程规划 2026 年 4 月 28 日</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ========================================
+           SpaceX Design System - Travel Itinerary
+           ======================================== */
+
+        :root {
+            --space-black: #000000;
+            --spectral-white: #f0f0fa;
+            --ghost-bg: rgba(240, 240, 250, 0.1);
+            --ghost-border: rgba(240, 240, 250, 0.35);
+            --dark-overlay: rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
+            background-color: var(--space-black);
+            color: var(--spectral-white);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background Image */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1542259681-d2cd687b3093?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-overlay);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            line-height: 1.0;
+        }
+
+        h1 {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: clamp(22px, 3vw, 32px);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ghost-border);
+        }
+
+        p, span, div {
+            font-family: 'D-DIN', 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Cover Section */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .cover h1 {
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            letter-spacing: 1.17px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            letter-spacing: 0.8px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        .info-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+        }
+
+        .info-item i {
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 0;
+            border-top: 1px solid var(--ghost-border);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .section-title i {
+            opacity: 0.8;
+        }
+
+        /* Transport Grid */
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .transport-card {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .transport-card:hover {
+            background: rgba(240, 240, 250, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .transport-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--ghost-border);
+        }
+
+        .transport-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            color: var(--spectral-white);
+            font-size: 1.3em;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .transport-name {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(240, 240, 250, 0.1);
+            font-size: 12px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            opacity: 0.6;
+        }
+
+        .info-value {
+            font-weight: 600;
+        }
+
+        .price-tag {
+            background: transparent;
+            border: 1px solid var(--ghost-border);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .booking-btn {
+            display: inline-block;
+            background: var(--ghost-bg);
+            color: var(--spectral-white);
+            padding: 12px 24px;
+            border: 1px solid var(--ghost-border);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .booking-btn:hover {
+            background: rgba(240, 240, 250, 0.2);
+            border-color: var(--spectral-white);
+        }
+
+        /* Timeline */
+        .itinerary-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .itinerary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--ghost-border);
+        }
+
+        .day-card {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            padding: 32px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 36px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--space-black);
+            border: 2px solid var(--spectral-white);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ghost-border);
+        }
+
+        .day-badge {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .day-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+        }
+
+        .schedule-item {
+            background: rgba(240, 240, 250, 0.03);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            border-left: 2px solid var(--ghost-border);
+        }
+
+        .schedule-time {
+            color: var(--spectral-white);
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-time i {
+            font-size: 10px;
+            opacity: 0.6;
+        }
+
+        .schedule-activity {
+            color: var(--spectral-white);
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .schedule-location {
+            color: var(--spectral-white);
+            font-size: 11px;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .schedule-tips {
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 4px;
+        }
+
+        .schedule-tips p {
+            font-size: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .schedule-tips i {
+            margin-top: 2px;
+        }
+
+        /* Ticket Grid */
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .ticket-card {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            transition: all 0.3s ease;
+        }
+
+        .ticket-card:hover {
+            background: rgba(240, 240, 250, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .ticket-header {
+            background: rgba(240, 240, 250, 0.1);
+            padding: 20px;
+            border-bottom: 1px solid var(--ghost-border);
+        }
+
+        .ticket-name {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.96px;
+            margin-bottom: 6px;
+        }
+
+        .ticket-rating {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .ticket-body {
+            padding: 20px;
+        }
+
+        .ticket-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(240, 240, 250, 0.1);
+            font-size: 12px;
+        }
+
+        .ticket-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .ticket-price {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background: rgba(240, 240, 250, 0.05);
+            margin: 16px 0;
+        }
+
+        .ticket-booking {
+            display: block;
+            background: var(--ghost-bg);
+            color: var(--spectral-white);
+            padding: 12px;
+            border: 1px solid var(--ghost-border);
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .ticket-booking:hover {
+            background: rgba(240, 240, 250, 0.2);
+            border-color: var(--spectral-white);
+        }
+
+        /* Budget Table */
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .budget-table thead {
+            border-bottom: 1px solid var(--ghost-border);
+        }
+
+        .budget-table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .budget-table td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(240, 240, 250, 0.1);
+        }
+
+        .budget-table tbody tr:hover {
+            background: rgba(240, 240, 250, 0.05);
+        }
+
+        .budget-total {
+            background: var(--ghost-bg);
+            border: 1px solid var(--ghost-border);
+            padding: 32px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .budget-total h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+
+        .budget-total .amount {
+            font-size: 48px;
+            font-weight: bold;
+            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
+        }
+
+        .budget-total p {
+            margin-top: 12px;
+            opacity: 0.6;
+        }
+
+        /* Tip Box & Alert Box */
+        .tip-box, .alert-box {
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .tip-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .tip-box h4, .alert-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .tip-box ul, .alert-box ul {
+            list-style: none;
+            padding-left: 24px;
+        }
+
+        .tip-box ul li, .alert-box ul li {
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .tip-box ul li::before {
+            content: '•';
+            position: absolute;
+            left: -16px;
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 24px;
+            border-top: 1px solid var(--ghost-border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .cover {
+                padding: 60px 16px;
+            }
+
+            .transport-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .itinerary-timeline {
+                padding-left: 30px;
+            }
+
+            .day-card::before {
+                left: -33px;
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Background Layers -->
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <!-- Cover -->
+        <div class="cover animate-in">
+            <p class="eyebrow">TRAVEL ITINERARY / 行程规划</p>
+            <h1>宁波 → 洛阳</h1>
+            <p class="subtitle">2026 年 4 月 28 日出发 | 4 天 3 晚深度游</p>
+            <p class="tagline">十三朝古都 · 龙门石窟 · 牡丹花海</p>
+
+            <div class="info-bar">
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i> 4 月 28 日 -5 月 1 日
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-users"></i> 2 人出行
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-cloud-sun"></i> 牡丹晚花期
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-yen-sign"></i> 人均约¥3500
+                </div>
+            </div>
+        </div>
+
+        <!-- Transport -->
+        <div class="section animate-in delay-1">
+            <h2 class="section-title">
+                <i class="fas fa-transporter"></i>
+                <span>TRANSPORT / 交通方案</span>
+            </h2>
+
+            <div class="transport-grid">
+                <!-- Flight -->
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon"><i class="fas fa-plane"></i></div>
+                        <div class="transport-name">飞机方案</div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">航线</span>
+                        <span class="info-value">宁波栎社 → 洛阳北郊</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">飞行时间</span>
+                        <span class="info-value">约 2.5 小时（直飞）</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">中转</span>
+                        <span class="info-value">需中转 1 次</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">参考价格</span>
+                        <span class="price-tag">¥829-1200/人</span>
+                    </div>
+                    <div class="tip-box" style="margin-top: 16px;">
+                        <p style="margin: 0;"><i class="fas fa-info-circle"></i> 需在郑州或贵阳中转，总行程约 5-7 小时</p>
+                    </div>
+                    <a href="https://m.ctrip.com/html5/flight/ngb-lya-day-1.html" target="_blank" class="booking-btn">
+                        <i class="fas fa-ticket-alt"></i> 携程预订
+                    </a>
+                </div>
+
+                <!-- Train -->
+                <div class="transport-card">
+                    <div class="transport-header">
+                        <div class="transport-icon"><i class="fas fa-train"></i></div>
+                        <div class="transport-name">高铁方案</div>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">路线</span>
+                        <span class="info-value">宁波站 → 洛阳龙门站</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">行程时间</span>
+                        <span class="info-value">约 7-9 小时</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">中转</span>
+                        <span class="info-value">需中转 1 次</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">参考价格</span>
+                        <span class="price-tag">¥650-800/人</span>
+                    </div>
+                    <div class="tip-box" style="margin-top: 16px;">
+                        <p style="margin: 0;"><i class="fas fa-info-circle"></i> 推荐：G1895（宁波 - 郑州东）→ G2095（郑州东 - 洛阳龙门）</p>
+                    </div>
+                    <a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank" class="booking-btn">
+                        <i class="fas fa-ticket-alt"></i> 12306 预订
+                    </a>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 24px;">
+                <h4><i class="fas fa-exclamation-circle"></i> 重要提醒</h4>
+                <ul>
+                    <li><strong>4 月 28 日出行提示：</strong>4 月底为旅游旺季，机票/高铁票需提前 7-10 天预订</li>
+                    <li><strong>机场交通：</strong>洛阳北郊机场距市区约 15km，打车约¥40-50，无地铁直达</li>
+                    <li><strong>高铁站交通：</strong>洛阳龙门站有地铁 2 号线直达市区，约 30 分钟</li>
+                    <li><strong>推荐选择：</strong>时间紧张选飞机，预算有限选高铁</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Itinerary -->
+        <div class="section animate-in delay-2">
+            <h2 class="section-title">
+                <i class="fas fa-route"></i>
+                <span>ITINERARY / 详细行程</span>
+            </h2>
+
+            <div class="itinerary-timeline">
+                <!-- Day 1 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 1</span>
+                        <span class="day-title">4 月 28 日 宁波 → 洛阳 + 洛邑古城</span>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 07:00 - 08:00</div>
+                        <div class="schedule-activity">宁波市区出发前往栎社机场</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 宁波栎社国际机场</div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 08:00 - 12:00</div>
+                        <div class="schedule-activity">乘坐飞机前往洛阳（中转郑州）</div>
+                        <div class="schedule-location"><i class="fas fa-plane"></i> 宁波 - 郑州 - 洛阳</div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 12:00 - 13:30</div>
+                        <div class="schedule-activity">抵达洛阳，酒店入住</div>
+                        <div class="schedule-location"><i class="fas fa-hotel"></i> 西工区/老城区</div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 18:00 - 21:00</div>
+                        <div class="schedule-activity">游览洛邑古城（夜景 + 汉服体验）</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 洛邑古城（免费）</div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> 洛邑古城晚上有灯光秀和非遗表演，汉服体验约¥100-200/套（含化妆）</p>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 2</span>
+                        <span class="day-title">4 月 29 日 龙门石窟 + 白马寺</span>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 08:30 - 13:00</div>
+                        <div class="schedule-activity">游览龙门石窟</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 龙门石窟（门票¥90）</div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 14:30 - 17:00</div>
+                        <div class="schedule-activity">游览白马寺</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 白马寺（门票¥35）</div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> 龙门石窟必须请导游讲解。白马寺国际佛殿区有泰国、印度、缅甸风格佛殿</p>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 3</span>
+                        <span class="day-title">4 月 30 日 牡丹花海 + 洛阳博物馆</span>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 08:30 - 11:30</div>
+                        <div class="schedule-activity">游览中国国花园（晚花期牡丹）</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 中国国花园（门票¥50）</div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 14:00 - 17:00</div>
+                        <div class="schedule-activity">参观洛阳博物馆</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 洛阳博物馆（免费，需预约）</div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> 4 月 28 日属于晚花期，中国国花园有智能控温展厅。洛阳博物馆需提前预约</p>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-badge">DAY 4</span>
+                        <span class="day-title">5 月 1 日 洛阳 → 宁波返程</span>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 09:00 - 11:00</div>
+                        <div class="schedule-activity">游览天子驾六博物馆（可选）</div>
+                        <div class="schedule-location"><i class="fas fa-map-marker-alt"></i> 天子驾六博物馆</div>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div class="schedule-time"><i class="fas fa-clock"></i> 14:00 -</div>
+                        <div class="schedule-activity">乘坐飞机/高铁返回宁波</div>
+                        <div class="schedule-location"><i class="fas fa-plane"></i> 返程</div>
+                    </div>
+
+                    <div class="schedule-tips">
+                        <p><i class="fas fa-lightbulb"></i> 建议预订 16:00 以后的航班/高铁</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tickets -->
+        <div class="section animate-in delay-3">
+            <h2 class="section-title">
+                <i class="fas fa-ticket-alt"></i>
+                <span>TICKETS / 景点门票</span>
+            </h2>
+
+            <div class="ticket-grid">
+                <!-- 龙门石窟 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">龙门石窟</div>
+                        <div class="ticket-rating">5A 级景区</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info-item">
+                            <span>开放时间</span>
+                            <span>08:00-19:00</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>游玩时长</span>
+                            <span>4-6 小时</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>预约提前</span>
+                            <span>7 天</span>
+                        </div>
+                        <div class="ticket-price">¥90/人</div>
+                        <a href="#" class="ticket-booking">官方微信预订</a>
+                    </div>
+                </div>
+
+                <!-- 白马寺 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">白马寺</div>
+                        <div class="ticket-rating">4A 级景区</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info-item">
+                            <span>开放时间</span>
+                            <span>07:30-19:00</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>游玩时长</span>
+                            <span>2-3 小时</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>预约提前</span>
+                            <span>3 天</span>
+                        </div>
+                        <div class="ticket-price">¥35/人</div>
+                        <a href="#" class="ticket-booking">官方预订</a>
+                    </div>
+                </div>
+
+                <!-- 中国国花园 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">中国国花园</div>
+                        <div class="ticket-rating">牡丹观赏园</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info-item">
+                            <span>开放时间</span>
+                            <span>07:00-19:00</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>游玩时长</span>
+                            <span>2-3 小时</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>花期</span>
+                            <span>至 5 月 10 日</span>
+                        </div>
+                        <div class="ticket-price">¥50/人</div>
+                        <a href="#" class="ticket-booking">抖音/携程预订</a>
+                    </div>
+                </div>
+
+                <!-- 洛阳博物馆 -->
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <div class="ticket-name">洛阳博物馆</div>
+                        <div class="ticket-rating">国家一级博物馆</div>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="ticket-info-item">
+                            <span>开放时间</span>
+                            <span>09:00-17:00</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>游玩时长</span>
+                            <span>3-4 小时</span>
+                        </div>
+                        <div class="ticket-info-item">
+                            <span>闭馆</span>
+                            <span>周一闭馆</span>
+                        </div>
+                        <div class="ticket-price">免费（需预约）</div>
+                        <a href="#" class="ticket-booking">公众号预约</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget -->
+        <div class="section animate-in delay-3">
+            <h2 class="section-title">
+                <i class="fas fa-calculator"></i>
+                <span>BUDGET / 预算明细</span>
+            </h2>
+
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>项目</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>小计</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-plane"></i> 机票（往返）</td>
+                        <td>¥1000/人</td>
+                        <td>2 人</td>
+                        <td>¥4000</td>
+                        <td>宁波 - 洛阳往返</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-hotel"></i> 住宿（3 晚）</td>
+                        <td>¥400/晚</td>
+                        <td>3 晚</td>
+                        <td>¥1200</td>
+                        <td>舒适型酒店</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-ticket-alt"></i> 景点门票</td>
+                        <td>¥225/人</td>
+                        <td>2 人</td>
+                        <td>¥450</td>
+                        <td>龙门石窟 + 白马寺 + 国花园</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-utensils"></i> 餐饮</td>
+                        <td>¥150/天</td>
+                        <td>4 天</td>
+                        <td>¥600</td>
+                        <td>本地小吃 + 特色餐厅</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-taxi"></i> 市内交通</td>
+                        <td>¥100/天</td>
+                        <td>4 天</td>
+                        <td>¥400</td>
+                        <td>地铁 + 公交 + 打车</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-shopping-bag"></i> 购物/其他</td>
+                        <td>¥500</td>
+                        <td>1 次</td>
+                        <td>¥500</td>
+                        <td>特产 + 纪念品</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="budget-total">
+                <h3><i class="fas fa-yen-sign"></i> 总预算（2 人）</h3>
+                <div class="amount">¥7,150</div>
+                <p>人均约 ¥3,575</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>GENERATED / 行程规划生成时间：2026 年 4 月 7 日</p>
+            <p>FILE LOCATION / 保存位置：F:/codebaby/jingtai/宁波 - 洛阳旅游行程规划 2026 年 4 月 28 日.html</p>
+        </div>
+    </div>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

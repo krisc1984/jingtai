@@ -1,0 +1,2 @@
+{"id":"aa99f882-c170-45d1-9f5b-c28abde8a80a","ts":"2026-04-08T11:39:00.801Z","severity":"warning","message":"Web search: Set BRAVE_API_KEY or use an Anthropic model for built-in search","source":"notify","read":false}
+{"id":"e5525316-cb15-4c64-996a-9a4b1136bbfc","ts":"2026-04-08T11:46:26.444Z","severity":"warning","message":"[state] DB unavailable — using filesystem state derivation (degraded mode)","source":"workflow-logger","read":false}
