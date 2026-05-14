@@ -15,7 +15,6 @@
             --spectral-white: #f0f0fa;
             --ghost-bg: rgba(240, 240, 250, 0.1);
             --ghost-border: rgba(240, 240, 250, 0.35);
-            --dark-overlay: rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -78,7 +77,7 @@
             padding: 80px 5vw;
         }
 
-        /* Background Images - Photography IS the design */
+        /* Background Image - Fixed, transitions smoothly */
         .bg-image {
             position: fixed;
             top: 0;
@@ -88,6 +87,8 @@
             background-size: cover;
             background-position: center;
             z-index: -2;
+            transition: opacity 0.8s ease;
+            opacity: 1;
         }
 
         .bg-overlay {
@@ -98,9 +99,9 @@
             height: 100%;
             background: linear-gradient(
                 135deg,
-                rgba(0, 0, 0, 0.4) 0%,
-                rgba(0, 0, 0, 0.2) 50%,
-                rgba(0, 0, 0, 0.4) 100%
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.15) 50%,
+                rgba(0, 0, 0, 0.3) 100%
             );
             z-index: -1;
         }
@@ -213,7 +214,7 @@
             margin: 40px 0;
         }
 
-        /* Info Blocks - Minimal, no containers */
+        /* Info Blocks */
         .info-block {
             margin: 30px 0;
         }
@@ -256,7 +257,7 @@
             opacity: 0.5;
         }
 
-        /* Blockquote - No border, text on image */
+        /* Blockquote */
         blockquote {
             font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             font-weight: 400;
@@ -276,14 +277,32 @@
             display: block;
         }
 
-        /* Photo Caption - Micro style, subtle */
+        /* Photo Display - Full viewport photography */
+        .photo-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .photo-section img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
         .photo-caption {
+            position: absolute;
+            bottom: 80px;
+            left: 5vw;
             font-size: 10px;
             font-weight: 400;
             letter-spacing: 1px;
             text-transform: uppercase;
-            opacity: 0.5;
-            margin-top: 15px;
+            opacity: 0.6;
         }
 
         /* Footer */
@@ -387,28 +406,8 @@
             }
         }
 
-        /* Section Background Images */
-        #section-1 .bg-image {
-            background-image: url('images/queenstown_2.jpg');
-        }
-
-        #section-2 .bg-image {
-            background-image: url('images/queenstown_1.jpg');
-        }
-
-        #section-3 .bg-image {
-            background-image: url('images/queenstown_1.jpg');
-        }
-
-        #section-4 .bg-image {
-            background-image: url('images/queenstown_2.jpg');
-        }
-
-        #section-5 .bg-image {
-            background-image: url('images/queenstown_1.jpg');
-        }
-
-        footer .bg-image {
+        /* Initial Background */
+        .bg-image {
             background-image: url('images/queenstown_2.jpg');
         }
     </style>
@@ -444,8 +443,6 @@
 
     <!-- Section 2: 行程概览 -->
     <section id="section-2">
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
         <div class="content">
             <h2>行程概览</h2>
             <div class="section-divider"></div>
@@ -480,8 +477,6 @@
 
     <!-- Section 3: 旅行亮点 -->
     <section id="section-3">
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
         <div class="content">
             <h2>旅行亮点</h2>
             <div class="section-divider"></div>
@@ -499,27 +494,16 @@
         </div>
     </section>
 
-    <!-- Section 4: 实时快照 - Full viewport photography -->
-    <section id="section-4">
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
-        <div class="content">
-            <div class="info-label">📸 实时快照</div>
-            <h2>皇后镇傍晚</h2>
-            <div class="section-divider"></div>
-            <p>
-                傍晚六点的皇后镇，瓦卡蒂普湖像一块深蓝色的玻璃，
-                远处的雪山就这么静静地杵在那儿。
-                没有云，没有风，连光线都像是被调低了饱和度。
-            </p>
-            <div class="photo-caption">皇后镇傍晚 · 瓦卡蒂普湖畔</div>
+    <!-- Section 4: 实时快照 - Full viewport photo display -->
+    <section id="section-4" style="padding: 0;">
+        <div class="photo-section">
+            <img src="images/queenstown_1.jpg" alt="皇后镇傍晚">
+            <div class="photo-caption">📸 皇后镇傍晚 · 瓦卡蒂普湖像一块深蓝色的玻璃</div>
         </div>
     </section>
 
     <!-- Section 5: 旅行日记 -->
     <section id="section-5">
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
         <div class="content">
             <h2>旅行日记</h2>
             <div class="section-divider"></div>
@@ -550,8 +534,6 @@
 
     <!-- Section 6: 关于 Agent World -->
     <section id="section-6">
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
         <div class="content">
             <h2>关于 Agent World</h2>
             <div class="section-divider"></div>
@@ -585,8 +567,6 @@
 
     <!-- Footer -->
     <footer>
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
         <div class="content footer-content">
             <h3 style="margin-bottom: 20px;">感谢 Agent World</h3>
             <p style="margin: 0 auto 30px;">
@@ -601,6 +581,10 @@
 
             <div class="copyright">
                 © 2026 PANGFUXIA · DESIGNED WITH SPACEX DESIGN SYSTEM
+            </div>
+
+            <div class="copyright" style="margin-top: 10px;">
+                <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="nofollow" style="color: inherit; opacity: 0.4; text-decoration: none;">浙 ICP 备 2026028597 号</a>
             </div>
         </div>
     </footer>
@@ -620,6 +604,17 @@
         });
 
         // Update background image on scroll
+        const sectionBgMap = {
+            'section-1': "url('images/queenstown_2.jpg')",
+            'section-2': "url('images/queenstown_2.jpg')",
+            'section-3': "url('images/queenstown_2.jpg')",
+            'section-4': "url('images/queenstown_1.jpg')",
+            'section-5': "url('images/queenstown_2.jpg')",
+            'section-6': "url('images/queenstown_2.jpg')"
+        };
+
+        let lastSection = '';
+
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section, footer');
             let currentSection = '';
@@ -627,20 +622,20 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
-                if (window.scrollY >= sectionTop - 200) {
+                if (window.scrollY >= sectionTop - sectionHeight / 2) {
                     currentSection = section.getAttribute('id');
                 }
             });
 
-            if (currentSection) {
-                const activeSection = document.getElementById(currentSection);
-                if (activeSection) {
-                    const bgImage = activeSection.querySelector('.bg-image');
-                    if (bgImage) {
-                        document.querySelectorAll('.bg-image').forEach(bg => {
-                            bg.style.backgroundImage = bgImage.style.backgroundImage;
-                        });
-                    }
+            if (currentSection && currentSection !== lastSection) {
+                const bgImage = document.querySelector('.bg-image');
+                if (bgImage && sectionBgMap[currentSection]) {
+                    bgImage.style.opacity = '0';
+                    setTimeout(() => {
+                        bgImage.style.backgroundImage = sectionBgMap[currentSection];
+                        bgImage.style.opacity = '1';
+                    }, 400);
+                    lastSection = currentSection;
                 }
             }
         });
