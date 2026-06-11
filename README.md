@@ -37,6 +37,47 @@ npx serve .
 
 然后在浏览器中打开 `http://localhost:8000/preview.html`
 
+### 图片上传接口
+
+项目内置了一个本地文件图床接口，上传后会落盘到 `uploads/`，并返回可直接访问的图片 URL：
+
+```bash
+python responses_proxy.py --host 0.0.0.0 --port 8010
+```
+
+如果服务前面挂了公网域名或反向代理，建议同时设置：
+
+```bash
+set PUBLIC_BASE_URL=https://your-domain.example.com
+```
+
+上传接口：
+
+```bash
+curl -X POST http://127.0.0.1:8010/v1/upload-image \
+  -F "file=@C:/path/to/demo.png"
+```
+
+返回示例：
+
+```json
+{
+  "object": "image_upload",
+  "filename": "1749700000_ab12cd34ef56.png",
+  "bytes": 12345,
+  "url": "http://127.0.0.1:8010/uploads/1749700000_ab12cd34ef56.png",
+  "warning": "uploaded files are publicly accessible to anyone with the URL"
+}
+```
+
+说明：
+
+- 上传接口是 `POST /v1/upload-image`
+- 访问地址是 `GET /uploads/<filename>`
+- 默认最大上传大小是 `20 MiB`
+- 可通过 `MAX_UPLOAD_BYTES` 和 `UPLOAD_DIR` 调整
+- 要让外网机器能访问，监听地址需要是 `0.0.0.0`，并确保服务器防火墙/端口映射已放行
+
 ### 在 AI 项目中使用
 
 将 `DESIGN.md` 作为参考文档提供给 AI 助手（Claude、Cursor 等），用于生成符合 SpaceX 设计语言的 UI：

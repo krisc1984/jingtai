@@ -1,3 +1,6 @@
 # BitFun snapshot data - auto managed
 .bitfun/
 .gstack/
+.env
+.env.*
+uploads/
