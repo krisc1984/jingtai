@@ -1,301 +1,769 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>项目导航 | PROJECT NAVIGATION</title>
-    <style>
-        /* ========================================
-           SpaceX Design System - Navigation Index
-           ======================================== */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>胖福科技 · 常驻式 Agent 工程化工作室 | PANGFU TECH</title>
+<meta name="description" content="胖福科技是由独立 AI 开发者运营的技术工作室，聚焦新一代常驻式 Agent（Always-on Agent）体系研发：Super-agent 调度架构、工单化任务分发、事件触发机制、长上下文链式召回、存算分离与沙箱隔离。">
+<style>
+/* ============================================================
+   胖福科技 · 清新纸感白设计系统
+   设计语言：纸感白底 / 柔和彩色 / 大留白 / 等宽字体点缀
+   ============================================================ */
+:root{
+  --bg:#fbfcfe; --bg-soft:#f4f6fb; --bg-card:#ffffff;
+  --text:#0f172a; --text-2:#475569; --muted:#94a3b8;
+  --line:#e6eaf2; --line-2:#d8dfec;
+  --blue:#4f46e5; --sky:#0ea5e9; --cyan:#06b6d4;
+  --violet:#8b5cf6; --green:#10b981; --amber:#f59e0b; --pink:#ec4899;
+  --grad-brand:linear-gradient(100deg,#4f46e5 0%,#0ea5e9 55%,#06b6d4 105%);
+  --grad-btn:linear-gradient(120deg,#4f46e5,#0ea5e9);
+  --radius:20px; --radius-sm:13px;
+  --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.04),0 4px 14px rgba(15,23,42,.05);
+  --shadow-md:0 4px 12px rgba(15,23,42,.06),0 16px 42px rgba(15,23,42,.08);
+  --shadow-lg:0 8px 24px rgba(15,23,42,.07),0 30px 70px rgba(15,23,42,.1);
+  font-size:16px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:92px;}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.7;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 42% at 50% -8%,rgba(79,70,229,.06),transparent 62%),
+    radial-gradient(ellipse 40% 32% at 90% 14%,rgba(6,182,212,.05),transparent 60%),
+    radial-gradient(ellipse 44% 36% at 4% 52%,rgba(139,92,246,.04),transparent 60%),
+    var(--bg);
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{width:min(1120px,calc(100% - 48px));margin-inline:auto;}
+::selection{background:rgba(79,70,229,.18);color:var(--text);}
 
-        :root {
-            --space-black: #000000;
-            --spectral-white: #f0f0fa;
-            --ghost-bg: rgba(240, 240, 250, 0.1);
-            --ghost-border: rgba(240, 240, 250, 0.35);
-            --dark-overlay: rgba(0, 0, 0, 0.6);
-        }
+.reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .75s cubic-bezier(.22,.8,.3,1),transform .75s cubic-bezier(.22,.8,.3,1);}
+.reveal.is-visible{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* ---------- Header ---------- */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(251,252,254,.78);
+  backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease,box-shadow .3s ease,background .3s ease;}
+.site-header.is-scrolled{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(15,23,42,.05);background:rgba(251,252,254,.92);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px;}
+.brand{display:flex;align-items:center;gap:11px;flex:0 0 auto;border-radius:12px;transition:opacity .2s ease,transform .2s ease;}
+.brand:hover{opacity:.82;transform:translateY(-1px);}
+.brand-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:var(--grad-btn);color:#fff;font-weight:800;font-size:1.05rem;
+  box-shadow:0 4px 12px rgba(14,165,233,.28);}
+.brand-text{display:flex;flex-direction:column;line-height:1.25;}
+.brand-text strong{font-size:1.04rem;letter-spacing:-.01em;}
+.brand-text small{color:var(--muted);font-size:.66rem;letter-spacing:.06em;font-family:var(--mono);}
+.site-nav{display:flex;gap:4px;}
+.site-nav a{padding:8px 14px;border-radius:999px;font-size:.88rem;color:var(--text-2);font-weight:500;transition:color .18s ease,background .18s ease;}
+.site-nav a:hover{color:var(--blue);background:rgba(79,70,229,.07);}
+.header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.menu-button{display:none;border:1px solid var(--line-2);background:#fff;color:var(--text);border-radius:999px;padding:7px 16px;font-size:.86rem;cursor:pointer;}
+.mobile-nav{display:none;padding:8px 4px 18px;background:rgba(251,252,254,.96);}
+.mobile-nav a{display:block;padding:10px 6px;border-bottom:1px solid var(--line);color:var(--text-2);font-size:.92rem;}
+.mobile-nav.open{display:block;}
 
-        body {
-            font-family: 'D-DIN', 'Arial', 'Verdana', sans-serif;
-            background-color: var(--space-black);
-            color: var(--spectral-white);
-            line-height: 1.5;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;
+  border:1px solid var(--line-2);background:#fff;color:var(--text);padding:10px 22px;font-size:.9rem;font-weight:600;
+  cursor:pointer;white-space:nowrap;
+  transition:border-color .22s ease,background .22s ease,box-shadow .22s ease,transform .22s ease,color .22s ease;}
+.btn:hover{border-color:var(--blue);color:var(--blue);box-shadow:0 6px 20px rgba(79,70,229,.12);transform:translateY(-1px);}
+.btn-primary{background:var(--grad-btn);border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.3);}
+.btn-primary:hover{color:#fff;box-shadow:0 12px 34px rgba(79,70,229,.42);border-color:transparent;}
+.btn-ghost{background:transparent;}
+.btn-lg{padding:15px 32px;font-size:1rem;}
+.btn-sm{padding:8px 18px;font-size:.84rem;}
 
-        /* Background Image Layer */
-        .bg-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:168px 0 96px;}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:60px;align-items:center;}
+.hero-brandline{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border-radius:999px;
+  background:rgba(79,70,229,.07);border:1px solid rgba(79,70,229,.18);
+  font-size:.78rem;font-weight:700;letter-spacing:.1em;color:var(--blue);font-family:var(--mono);}
+.hero-brandline .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 0 3px rgba(16,185,129,.16);animation:pulse 2.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,.16);}50%{box-shadow:0 0 0 6px rgba(16,185,129,.08);}}
+.hero h1{margin:26px 0 22px;font-size:clamp(2.5rem,4.9vw,3.9rem);line-height:1.12;letter-spacing:-.04em;font-weight:800;}
+.hero h1 .gradient-text{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-lede{max-width:540px;margin:0;font-size:1.05rem;color:var(--text-2);}
+.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:36px;}
+.hero-stats{display:flex;margin:46px 0 0;padding:26px 0 0;border-top:1px solid var(--line);}
+.hero-stats>div{flex:1;padding-right:18px;}
+.hero-stats>div+div{padding-left:18px;border-left:1px solid var(--line);}
+.hero-stats dt{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;font-family:var(--mono);
+  background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-stats dd{margin:3px 0 0;color:var(--muted);font-size:.78rem;}
+.hero-stats .stat-unit{font-size:.9rem;margin-left:1px;-webkit-text-fill-color:var(--muted);}
 
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-overlay);
-            z-index: -1;
-        }
+.hero-arch{position:relative;padding:26px 26px 20px;border-radius:24px;background:var(--bg-card);
+  border:1px solid var(--line);box-shadow:var(--shadow-lg);}
+.hero-arch::before{content:"";position:absolute;inset:-14% -10% auto;height:46%;
+  background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(14,165,233,.1),transparent 66%);
+  pointer-events:none;z-index:-1;}
+.hero-arch-caption{margin-bottom:14px;text-align:center;color:var(--muted);font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;font-family:var(--mono);}
+.hero-arch svg{width:100%;height:auto;}
+.hero-arch-note{margin-top:12px;padding:11px 16px;border-radius:12px;background:var(--bg-soft);
+  border:1px solid var(--line);color:var(--text-2);font-size:.84rem;text-align:center;}
+.hero-arch-note code{color:var(--blue);font-family:var(--mono);font-size:.86em;}
 
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
+/* ---------- Section ---------- */
+.section{position:relative;padding:108px 0;}
+.section+.section{border-top:1px solid var(--line);}
+.section-soft{background:var(--bg-soft);}
+.section-head{max-width:760px;margin-bottom:60px;}
+.section-head.center{margin-inline:auto;text-align:center;}
+.section-tag{display:inline-block;margin-bottom:14px;color:var(--blue);font-family:var(--mono);
+  font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;}
+.section-head h2{margin:0 0 16px;font-size:clamp(1.75rem,3vw,2.4rem);line-height:1.25;letter-spacing:-.03em;font-weight:800;}
+.section-head p{margin:0;color:var(--text-2);font-size:1.01rem;}
+.more-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;color:var(--blue);font-weight:700;font-size:.92rem;transition:gap .2s ease;}
+.more-link:hover{gap:11px;}
+.more-link::after{content:"→";}
 
-        /* Header Section */
-        header {
-            text-align: center;
-            padding: 60px 0 80px;
-        }
+/* ---------- Cards ---------- */
+.card{position:relative;padding:30px;border-radius:var(--radius);background:var(--bg-card);
+  border:1px solid var(--line);box-shadow:var(--shadow-sm);overflow:hidden;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-brand);opacity:0;transition:opacity .28s ease;}
+.card:hover{transform:translateY(-5px);border-color:rgba(79,70,229,.3);box-shadow:var(--shadow-md);}
+.card:hover::before{opacity:1;}
+.card h3{margin:0 0 10px;font-size:1.12rem;letter-spacing:-.01em;}
+.card p{margin:0;color:var(--text-2);font-size:.92rem;}
+.card .card-meta{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line-2);
+  font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.04em;}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.feature-icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:22px;border-radius:14px;
+  color:#fff;background:var(--grad-btn);box-shadow:0 8px 18px rgba(79,70,229,.28);}
+.feature-icon svg{width:22px;height:22px;}
+.feature-grid .card:nth-child(6n+2) .feature-icon{background:linear-gradient(135deg,#0ea5e9,#06b6d4);box-shadow:0 8px 18px rgba(14,165,233,.26);}
+.feature-grid .card:nth-child(6n+3) .feature-icon{background:linear-gradient(135deg,#8b5cf6,#a78bfa);box-shadow:0 8px 18px rgba(139,92,246,.26);}
+.feature-grid .card:nth-child(6n+4) .feature-icon{background:linear-gradient(135deg,#10b981,#34d399);box-shadow:0 8px 18px rgba(16,185,129,.26);}
+.feature-grid .card:nth-child(6n+5) .feature-icon{background:linear-gradient(135deg,#f59e0b,#fbbf24);box-shadow:0 8px 18px rgba(245,158,11,.26);}
+.feature-grid .card:nth-child(6n+6) .feature-icon{background:linear-gradient(135deg,#ec4899,#f472b6);box-shadow:0 8px 18px rgba(236,72,153,.26);}
 
-        .eyebrow {
-            font-family: 'D-DIN', 'Arial', sans-serif;
-            font-size: 10px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--spectral-white);
-            opacity: 0.7;
-            margin-bottom: 16px;
-        }
+/* ---------- 技术体系 ---------- */
+.architecture-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:44px;align-items:start;}
+.flow-board{padding:28px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--line);box-shadow:var(--shadow-sm);}
+.flow-board h3,.architecture-grid h3{margin:0 0 6px;font-size:1.15rem;}
+.flow-hint{margin:0 0 24px;color:var(--muted);font-size:.86rem;}
+.flow-row{display:flex;align-items:center;gap:9px;}
+.flow-row+.flow-row{margin-top:18px;}
+.flow-node{flex:1;padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--line-2);
+  background:var(--bg-soft);font-size:.9rem;font-weight:700;transition:border-color .2s ease,transform .2s ease;}
+.flow-node:hover{border-color:rgba(79,70,229,.45);transform:translateY(-2px);}
+.flow-node small{display:block;margin-top:4px;color:var(--muted);font-weight:400;font-size:.72rem;}
+.flow-node.input-node{border-color:rgba(6,182,212,.5);background:rgba(6,182,212,.07);}
+.flow-node.domain-node{border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.07);}
+.flow-node.output-node{border-color:rgba(79,70,229,.5);background:rgba(79,70,229,.07);}
+.flow-arrow{position:relative;flex:0 0 34px;height:1.4px;background:var(--line-2);}
+.flow-arrow::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);
+  border-left:6px solid var(--line-2);border-top:4px solid transparent;border-bottom:4px solid transparent;}
+.mechanism-list{display:grid;gap:13px;}
+.mechanism-list article{padding:18px 20px;border-radius:var(--radius-sm);background:var(--bg-card);
+  border:1px solid var(--line);transition:border-color .2s ease,box-shadow .2s ease;}
+.mechanism-list article:hover{border-color:rgba(79,70,229,.3);box-shadow:var(--shadow-md);}
+.mechanism-list article>span{display:inline-block;margin-bottom:8px;font-family:var(--mono);font-size:.7rem;
+  font-weight:700;letter-spacing:.12em;color:var(--blue);background:rgba(79,70,229,.08);
+  padding:3px 9px;border-radius:999px;}
+.mechanism-list h3{margin:0 0 6px;font-size:1.02rem;}
+.mechanism-list p{margin:0;color:var(--text-2);font-size:.9rem;}
 
-        h1 {
-            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
-            font-size: clamp(32px, 5vw, 64px);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.96px;
-            line-height: 1.0;
-            margin-bottom: 16px;
-        }
+/* ---------- 终端日志 ---------- */
+.terminal{margin-top:44px;border-radius:var(--radius);overflow:hidden;background:#0f172a;box-shadow:var(--shadow-lg);}
+.terminal-bar{display:flex;align-items:center;gap:7px;padding:12px 18px;background:#151f38;border-bottom:1px solid #22305a;}
+.terminal-bar span{width:9px;height:9px;border-radius:50%;background:#cbd5e1;}
+.terminal-bar span:nth-child(1){background:#ff5f57;}
+.terminal-bar span:nth-child(2){background:#febc2e;}
+.terminal-bar span:nth-child(3){background:#28c840;}
+.terminal-bar em{margin-left:8px;font-style:normal;color:#8fa3c8;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;}
+.terminal-body{margin:0;padding:22px 24px;color:#dbe4f5;font-family:var(--mono);font-size:.82rem;line-height:1.95;overflow-x:auto;}
+.terminal-body .t-time{color:#64748b;}
+.terminal-body .t-tag{color:#38bdf8;}
+.terminal-body .t-ok{color:#34d399;}
+.terminal-body .t-warn{color:#fbbf24;}
+.terminal-body .t-dim{color:#7c8db5;}
 
-        .subtitle {
-            font-family: 'D-DIN', 'Arial', sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1.17px;
-            color: var(--spectral-white);
-            opacity: 0.8;
-        }
+/* ---------- 交付流程 ---------- */
+.step-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:step;}
+.step{position:relative;padding:28px 26px;border-radius:var(--radius);background:var(--bg-card);
+  border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;}
+.step:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:rgba(79,70,229,.3);}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);
+  display:block;font-family:var(--mono);font-size:1.5rem;font-weight:800;letter-spacing:-.02em;
+  background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px;}
+.step h3{margin:0 0 8px;font-size:1.05rem;}
+.step p{margin:0;color:var(--text-2);font-size:.9rem;}
+.step ul{margin:14px 0 0;padding-left:17px;color:var(--text-2);font-size:.85rem;}
+.step li+li{margin-top:5px;}
+.step li::marker{color:var(--sky);}
 
-        /* Links Grid */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
+/* ---------- 范式对标 ---------- */
+.bench-wrap{border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);overflow:hidden;}
+.bench-scroll{overflow-x:auto;}
+table.bench{width:100%;border-collapse:collapse;min-width:720px;}
+table.bench th,table.bench td{padding:16px 22px;text-align:left;border-bottom:1px solid var(--line);font-size:.9rem;vertical-align:top;}
+table.bench thead th{background:var(--bg-soft);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);color:var(--text-2);font-weight:700;white-space:nowrap;}
+table.bench tbody th{font-weight:700;color:var(--text);white-space:nowrap;width:150px;}
+table.bench td{color:var(--text-2);}
+table.bench tbody tr:last-child th,table.bench tbody tr:last-child td{border-bottom:none;}
+table.bench td.self{color:var(--text);font-weight:600;background:rgba(79,70,229,.045);}
+table.bench thead th.self{color:var(--blue);background:rgba(79,70,229,.09);}
+.bench-note{padding:16px 22px;background:var(--bg-soft);color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);}
 
-        /* Link Card - SpaceX Style */
-        .link-card {
-            position: relative;
-            min-height: 200px;
-            padding: 32px;
-            background: var(--ghost-bg);
-            border: 1px solid var(--ghost-border);
-            border-radius: 4px;
-            text-decoration: none;
-            color: var(--spectral-white);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            overflow: hidden;
-        }
+/* ---------- CTA ---------- */
+.cta{position:relative;padding:0 0 108px;}
+.cta-panel{position:relative;overflow:hidden;padding:64px 48px;border-radius:28px;text-align:center;
+  background:var(--grad-brand);color:#fff;box-shadow:0 26px 70px rgba(79,70,229,.32);}
+.cta-panel::after{content:"";position:absolute;inset:auto -20% -60% auto;width:60%;height:140%;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,255,255,.16),transparent 70%);pointer-events:none;}
+.cta-panel h2{margin:0 0 14px;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.03em;font-weight:800;}
+.cta-panel p{margin:0 auto;max-width:620px;color:rgba(255,255,255,.88);font-size:1rem;}
+.cta-actions{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:32px;}
+.btn-onbrand{background:#fff;border-color:transparent;color:var(--blue);}
+.btn-onbrand:hover{color:var(--blue);background:#fff;border-color:transparent;box-shadow:0 12px 30px rgba(15,23,42,.22);}
+.btn-outline-brand{background:transparent;border-color:rgba(255,255,255,.55);color:#fff;}
+.btn-outline-brand:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.12);box-shadow:none;}
 
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--spectral-white);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--line);background:var(--bg-card);padding:52px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:40px;}
+.footer-brand p{margin:14px 0 0;color:var(--text-2);font-size:.88rem;max-width:340px;}
+.footer-col h4{margin:0 0 14px;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--mono);color:var(--muted);}
+.footer-col ul{margin:0;padding:0;list-style:none;}
+.footer-col li+li{margin-top:9px;}
+.footer-col a{color:var(--text-2);font-size:.88rem;transition:color .2s ease;}
+.footer-col a:hover{color:var(--blue);}
+.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
+  color:var(--muted);font-size:.8rem;}
+.footer-bottom a{color:var(--muted);}
+.footer-bottom a:hover{color:var(--blue);}
 
-        .link-card:hover {
-            background: rgba(240, 240, 250, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .link-card:hover::before {
-            opacity: 0.5;
-        }
-
-        .link-category {
-            font-family: 'D-DIN', 'Arial', sans-serif;
-            font-size: 10px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.6;
-            margin-bottom: 12px;
-        }
-
-        .link-title {
-            font-family: 'D-DIN-Bold', 'Arial', sans-serif;
-            font-size: clamp(18px, 2.5vw, 24px);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.96px;
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
-
-        .link-description {
-            font-family: 'D-DIN', 'Arial', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.7;
-        }
-
-        .link-arrow {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            font-size: 24px;
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover .link-arrow {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid var(--ghost-border);
-        }
-
-        .footer-text {
-            font-family: 'D-DIN', 'Arial', sans-serif;
-            font-size: 10px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.5;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 24px 16px;
-            }
-
-            header {
-                padding: 40px 0 60px;
-            }
-
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .link-card {
-                padding: 24px;
-                min-height: 180px;
-            }
-        }
-    </style>
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:48px;}
+  .architecture-grid{grid-template-columns:1fr;gap:32px;}
+  .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .step-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:720px){
+  .site-nav,.header-actions .btn{display:none;}
+  .menu-button{display:inline-block;}
+  .container{width:calc(100% - 32px);}
+  .hero{padding:132px 0 72px;}
+  .section{padding:76px 0;}
+  .feature-grid{grid-template-columns:1fr;}
+  .step-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .hero-stats{flex-wrap:wrap;gap:20px 0;}
+  .hero-stats>div{flex:0 0 50%;padding-right:14px;}
+  .hero-stats>div+div{padding-left:14px;}
+  .hero-stats>div:nth-child(3){padding-left:0;border-left:none;}
+  .cta-panel{padding:44px 24px;}
+  .flow-row{flex-wrap:wrap;}
+  .flow-arrow{display:none;}
+  .flow-node{flex:0 0 100%;}
+}
+</style>
 </head>
 <body>
-    <!-- Background Layers -->
-    <div class="bg-image"></div>
-    <div class="bg-overlay"></div>
+<div class="ambient"></div>
 
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">福</span>
+        <span class="brand-text">
+          <strong>胖福科技</strong>
+          <small>PANGFU TECH</small>
+        </span>
+      </a>
+      <nav class="site-nav">
+        <a href="#research">研究方向</a>
+        <a href="#system">技术体系</a>
+        <a href="#delivery">交付流程</a>
+        <a href="#bench">范式对标</a>
+        <a href="#contact">联系合作</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-sm btn-primary" href="#contact">聊聊需求</a>
+        <button class="menu-button" id="menuBtn" type="button">菜单</button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#research">研究方向</a>
+      <a href="#system">技术体系</a>
+      <a href="#delivery">交付流程</a>
+      <a href="#bench">范式对标</a>
+      <a href="#contact">联系合作</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
     <div class="container">
-        <!-- Header -->
-        <header>
-            <p class="eyebrow">PROJECT INDEX</p>
-            <h1>项目导航中心</h1>
-            <p class="subtitle">MISSION CONTROL / 任务控制中心</p>
-        </header>
-
-        <!-- Links Grid -->
-        <div class="links-grid">
-            <!-- Report Link -->
-            <a href="2026 江苏春假旅游热门目的地报告.html" class="link-card">
-                <span class="link-category">REPORT / 报告</span>
-                <h2 class="link-title">2026 江苏春假旅游热门目的地报告</h2>
-                <p class="link-description">SPRING BREAK DESTINATION ANALYSIS</p>
-                <span class="link-arrow">→</span>
-            </a>
-
-            <!-- Travel Plan 1 -->
-            <a href="宁波 - 洛阳旅游行程规划 2026 年 4 月 28 日.html" class="link-card">
-                <span class="link-category">TRAVEL PLAN / 行程规划</span>
-                <h2 class="link-title">宁波 → 洛阳</h2>
-                <p class="link-description">2026 年 4 月 28 日 / NINGBO TO LUOYANG</p>
-                <span class="link-arrow">→</span>
-            </a>
-
-            <!-- Travel Plan 2 -->
-            <a href="宁波 - 武汉旅游行程规划 2026 年 4 月 28 日.html" class="link-card">
-                <span class="link-category">TRAVEL PLAN / 行程规划</span>
-                <h2 class="link-title">宁波 → 武汉</h2>
-                <p class="link-description">2026 年 4 月 28 日 / NINGBO TO WUHAN</p>
-                <span class="link-arrow">→</span>
-            </a>
-
-            <!-- Queenstown Journey -->
-            <a href="queenstown-journey.html" class="link-card">
-                <span class="link-category">TRAVEL JOURNEY / 云端旅行</span>
-                <h2 class="link-title">新西兰皇后镇之旅</h2>
-                <p class="link-description">QUEENSTOWN / AGENT WORLD · 胖福虾 🦞</p>
-                <span class="link-arrow">→</span>
-            </a>
-
-            <!-- Preview Links -->
-            <a href="preview.html" class="link-card">
-                <span class="link-category">PREVIEW / 预览</span>
-                <h2 class="link-title">Preview Mode</h2>
-                <p class="link-description">LIGHT THEME / 浅色主题</p>
-                <span class="link-arrow">→</span>
-            </a>
-
-            <a href="preview-dark.html" class="link-card">
-                <span class="link-category">PREVIEW / 预览</span>
-                <h2 class="link-title">Preview Dark</h2>
-                <p class="link-description">DARK THEME / 深色主题</p>
-                <span class="link-arrow">→</span>
-            </a>
+      <div class="hero-grid">
+        <div>
+          <span class="hero-brandline"><span class="status-dot"></span>ALWAYS-ON AGENT · 常驻在线</span>
+          <h1>让 Agent <span class="gradient-text">常驻在线</span><br>跨会话、跨天自主推进</h1>
+          <p class="hero-lede">
+            胖福科技是由独立 AI 开发者运营的技术工作室，聚焦新一代常驻式 Agent（Always-on Agent）体系研发。
+            从 Super-agent 调度架构、工单化任务分发，到事件触发、长上下文链式召回、存算分离与沙箱隔离——
+            输出可真正跑在生产环境里的 Agent 工程化方案。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="#system">查看技术体系</a>
+            <a class="btn btn-lg" href="#contact">联系合作 →</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>1</dt><dd>人全栈 · 架构到上线</dd></div>
+            <div><dt>24<span class="stat-unit">×7</span></dt><dd>常驻运行 · 无人值守</dd></div>
+            <div><dt>6</dt><dd>核心子系统自研</dd></div>
+          </dl>
         </div>
 
-        <!-- Footer -->
-        <footer>
-            <p class="footer-text">© 2026 PROJECT NAVIGATION / 项目导航系统</p>
-            <p class="footer-text" style="margin-top: 10px;">
-                <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="nofollow" style="color: inherit; opacity: 0.5; text-decoration: none;">浙 ICP 备 2026028597 号</a>
-            </p>
-        </footer>
+        <div class="hero-arch">
+          <p class="hero-arch-caption">Always-on Agent · Runtime Stack</p>
+          <svg viewBox="0 0 460 372" role="img" aria-label="常驻式 Agent 分层架构图">
+            <defs>
+              <marker id="ah" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto">
+                <path d="M0,0 L9,4.5 L0,9 z" fill="#94a3b8"/>
+              </marker>
+              <marker id="ahc" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto">
+                <path d="M0,0 L9,4.5 L0,9 z" fill="#06b6d4"/>
+              </marker>
+            </defs>
+
+            <!-- ① 事件源 -->
+            <rect x="6" y="6" width="336" height="52" rx="13" fill="#ffffff" stroke="#e6eaf2"/>
+            <rect x="6" y="6" width="4" height="52" rx="2" fill="#4f46e5"/>
+            <circle cx="34" cy="32" r="12" fill="#4f46e5"/>
+            <text x="34" y="36.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+            <text x="56" y="28" font-size="13" font-weight="700" fill="#0f172a">事件源 Event Ingress</text>
+            <text x="56" y="44" font-size="10" fill="#64748b">定时器 · Webhook · 会话消息 · 外部系统信号</text>
+            <line x1="174" y1="58" x2="174" y2="78" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+
+            <!-- ② 调度中枢 -->
+            <rect x="6" y="80" width="336" height="52" rx="13" fill="#ffffff" stroke="#e6eaf2"/>
+            <rect x="6" y="80" width="4" height="52" rx="2" fill="#0ea5e9"/>
+            <circle cx="34" cy="106" r="12" fill="#0ea5e9"/>
+            <text x="34" y="110.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+            <text x="56" y="102" font-size="13" font-weight="700" fill="#0f172a">Super-agent 调度中枢</text>
+            <text x="56" y="118" font-size="10" fill="#64748b">意图解析 · 计划编排 · 优先级仲裁 · 上下文装配</text>
+            <line x1="174" y1="132" x2="174" y2="152" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+
+            <!-- ③ 工单队列 -->
+            <rect x="6" y="154" width="336" height="52" rx="13" fill="#ffffff" stroke="#e6eaf2"/>
+            <rect x="6" y="154" width="4" height="52" rx="2" fill="#06b6d4"/>
+            <circle cx="34" cy="180" r="12" fill="#06b6d4"/>
+            <text x="34" y="184.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+            <text x="56" y="176" font-size="13" font-weight="700" fill="#0f172a">工单化任务分发</text>
+            <text x="56" y="192" font-size="10" fill="#64748b">Ticket 状态机 · 重试与补偿 · 幂等与去重</text>
+            <line x1="174" y1="206" x2="174" y2="226" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+
+            <!-- ④ 隔离执行 -->
+            <rect x="6" y="228" width="336" height="52" rx="13" fill="#ffffff" stroke="#e6eaf2"/>
+            <rect x="6" y="228" width="4" height="52" rx="2" fill="#8b5cf6"/>
+            <circle cx="34" cy="254" r="12" fill="#8b5cf6"/>
+            <text x="34" y="258.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+            <text x="56" y="250" font-size="13" font-weight="700" fill="#0f172a">沙箱隔离执行器</text>
+            <text x="56" y="266" font-size="10" fill="#64748b">工具链 · 模型集成 · 资源与权限边界</text>
+            <line x1="174" y1="280" x2="174" y2="300" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#ah)"/>
+
+            <!-- ⑤ 记忆底座 -->
+            <rect x="6" y="302" width="336" height="52" rx="13" fill="#ffffff" stroke="#e6eaf2"/>
+            <rect x="6" y="302" width="4" height="52" rx="2" fill="#10b981"/>
+            <circle cx="34" cy="328" r="12" fill="#10b981"/>
+            <text x="34" y="332.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+            <text x="56" y="324" font-size="13" font-weight="700" fill="#0f172a">记忆底座（存算分离）</text>
+            <text x="56" y="340" font-size="10" fill="#64748b">会话态 / 长期记忆 / 向量索引 · 独立扩缩</text>
+
+            <!-- 链式召回回路 -->
+            <path d="M342,328 H372 V106 H346" fill="none" stroke="#06b6d4" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ahc)"/>
+            <text x="382" y="210" font-size="10" font-weight="700" fill="#0891b2">链式</text>
+            <text x="382" y="224" font-size="10" font-weight="700" fill="#0891b2">召回</text>
+          </svg>
+          <p class="hero-arch-note">事件进入 → 中枢编排 → 工单分发 → 沙箱执行 → 落库沉淀，<code>⑤ → ②</code> 形成长期记忆闭环</p>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- ============ 研究方向 ============ -->
+  <section class="section" id="research">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Research Directions</span>
+        <h2>六个方向，撑起一个能长期跑下去的 Agent</h2>
+        <p>常驻式 Agent 的难点不在"能不能调用模型"，而在"没人盯着的时候它还靠不靠谱"。下面六块是胖福科技持续投入的核心研究方向。</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="17" r="2.4"/><circle cx="19" cy="17" r="2.4"/>
+              <path d="M12 7.4 5.9 14.8M12 7.4l6.1 7.4M7.4 17h9.2"/>
+            </svg>
+          </div>
+          <h3>Super-agent 调度架构</h3>
+          <p>以中枢 Agent 统领多个专职子 Agent：统一意图解析、计划拆解与优先级仲裁，把"一次性问答"升级为可编排、可中断、可续跑的多角色协作。</p>
+          <div class="card-meta">PLANNER / ROUTER / ARBITER</div>
+        </article>
+
+        <article class="card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 7h16v5a2 2 0 0 1 0 4H4a2 2 0 0 1 0-4z"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M8 16v5M16 16v5"/>
+            </svg>
+          </div>
+          <h3>工单化任务分发</h3>
+          <p>把每一次意图落成一张带状态机的工单：待派发 / 执行中 / 待确认 / 已完成 / 已补偿。重试、幂等、去重与人工介入点全部挂载在工单上，任务不会凭空消失。</p>
+          <div class="card-meta">TICKET STATE MACHINE</div>
+        </article>
+
+        <article class="card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/>
+            </svg>
+          </div>
+          <h3>事件触发机制</h3>
+          <p>定时脉冲、Webhook 回调、外部系统信号、会话消息统一收敛为事件总线。Agent 不再等用户开口，而是在事件到达时主动醒来推进任务。</p>
+          <div class="card-meta">CRON / WEBHOOK / SIGNAL</div>
+        </article>
+
+        <article class="card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 14.5 14.5 9.5"/>
+              <path d="M7.8 11.2 6 13a4.2 4.2 0 0 0 5.9 5.9l1.8-1.8"/><path d="M16.2 12.8 18 11a4.2 4.2 0 0 0-5.9-5.9L10.3 7"/>
+            </svg>
+          </div>
+          <h3>长上下文链式召回</h3>
+          <p>摘要压缩 + 分层索引 + 按需回溯的组合策略：近期细节走原文，远期事实走索引，跨天任务靠链式召回把关键上下文逐段拉回，避免上下文无限膨胀。</p>
+          <div class="card-meta">SUMMARIZE / INDEX / RECALL</div>
+        </article>
+
+        <article class="card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/><path d="M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/>
+            </svg>
+          </div>
+          <h3>存算分离</h3>
+          <p>会话态、长期记忆、向量索引与执行器解耦存放。执行节点可随时重建而不丢状态，存储与算力各自独立扩缩，长时间运行的成本可控。</p>
+          <div class="card-meta">STATE / VECTOR / SCALE</div>
+        </article>
+
+        <article class="card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 5 6v6c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6z"/><path d="M9.3 12.2 11.2 14l3.6-3.8"/>
+            </svg>
+          </div>
+          <h3>沙箱隔离方案</h3>
+          <p>工具调用、代码执行与文件读写全部在受限沙箱内完成：资源配额、网络白名单、权限分级、高风险动作默认转人工审批，让"自主"不等于"失控"。</p>
+          <div class="card-meta">QUOTA / ALLOWLIST / APPROVAL</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 技术体系 ============ -->
+  <section class="section section-soft" id="system">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">System Design</span>
+        <h2>一次事件，如何在系统里走完全程</h2>
+        <p>常驻式 Agent 的稳定性来自可追踪的链路：每一跳都有明确产物，每一次失败都有落点。以下是运行时主干与配套治理机制。</p>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="flow-board reveal">
+          <h3>运行时主干链路</h3>
+          <p class="flow-hint">从信号到达，到结果沉淀与再次唤醒</p>
+          <div class="flow-row">
+            <div class="flow-node input-node">事件接入<small>定时 / Webhook / 消息</small></div>
+            <span class="flow-arrow"></span>
+            <div class="flow-node domain-node">中枢裁决<small>是否需要唤醒、优先级</small></div>
+          </div>
+          <div class="flow-row">
+            <div class="flow-node domain-node">上下文装配<small>近期原文 + 索引召回</small></div>
+            <span class="flow-arrow"></span>
+            <div class="flow-node input-node">计划编排<small>拆工单 / 选子 Agent</small></div>
+          </div>
+          <div class="flow-row">
+            <div class="flow-node output-node">工单派发<small>状态机落库、幂等键</small></div>
+            <span class="flow-arrow"></span>
+            <div class="flow-node domain-node">沙箱执行<small>工具链 + 模型调用</small></div>
+          </div>
+          <div class="flow-row">
+            <div class="flow-node domain-node">结果回填<small>产物、轨迹、审计</small></div>
+            <span class="flow-arrow"></span>
+            <div class="flow-node output-node">沉淀与续步<small>写记忆 / 唤醒下一工单</small></div>
+          </div>
+        </div>
+
+        <div class="mechanism-list">
+          <article class="reveal">
+            <span>RESUME</span>
+            <h3>断点续跑</h3>
+            <p>执行进度随工单持久化，进程重启、模型超时、网络中断后均可从最近检查点继续，跨天任务不丢现场。</p>
+          </article>
+          <article class="reveal">
+            <span>IDEMPOTENT</span>
+            <h3>幂等与去重</h3>
+            <p>同一事件重复投递只产生一张工单；外部写操作携带幂等键，避免重试造成副作用叠加。</p>
+          </article>
+          <article class="reveal">
+            <span>BUDGET</span>
+            <h3>成本与步数护栏</h3>
+            <p>单工单步数上限、Token 预算、工具调用频率三层限流，超出即挂起转人工，防止失控式燃烧。</p>
+          </article>
+          <article class="reveal">
+            <span>TRACE</span>
+            <h3>全链路可回放</h3>
+            <p>每一次决策、工具调用与模型输出都落为事件，可逐条回放复盘，问题定位不靠猜。</p>
+          </article>
+          <article class="reveal">
+            <span>APPROVAL</span>
+            <h3>高风险人工闸门</h3>
+            <p>涉及资金、外发消息、删除类操作默认进入审批队列，Agent 负责准备，人来负责确认。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+          <em>always-on-agent · runtime tick</em>
+        </div>
+        <pre class="terminal-body"><span class="t-dim">$</span> agent tick --session s-7f3a --trace on
+<span class="t-time">03:00:00.112</span> <span class="t-tag">[event]</span>  cron:daily-brief  →  topic=research-digest
+<span class="t-time">03:00:00.284</span> <span class="t-tag">[plan]</span>   唤醒判定 <span class="t-ok">WAKE</span> · priority=P1 · budget=8 steps
+<span class="t-time">03:00:00.509</span> <span class="t-tag">[recall]</span>  链式召回 3 段 · 原文 12k tok + 索引 4 条
+<span class="t-time">03:00:01.037</span> <span class="t-tag">[ticket]</span>  T-2041 创建 → 状态 <span class="t-ok">DISPATCHED</span>
+<span class="t-time">03:00:01.880</span> <span class="t-tag">[sandbox]</span> 工具 web.search ×3 · 网络白名单命中
+<span class="t-time">03:00:04.216</span> <span class="t-tag">[ticket]</span>  T-2041 <span class="t-ok">DONE</span> · 产物 1 份 · 落记忆 2 条
+<span class="t-time">03:00:04.221</span> <span class="t-warn">[guard]</span>   步数 4/8 · token 31% · 无需人工介入
+<span class="t-time">03:00:04.402</span> <span class="t-tag">[next]</span>    唤醒 T-2042（依赖 T-2041 产出）
+<span class="t-dim"># 会话中断亦可从检查点 resume，跨天任务不丢现场</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 交付流程 ============ -->
+  <section class="section" id="delivery">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Delivery Pipeline</span>
+        <h2>一个人，跑完从架构到上线的全流程</h2>
+        <p>独立开发者不是"只能做 demo"。架构设计、模型集成、工具链开发到部署运维，全部由同一人闭环交付，沟通链路最短，方案与实现不会脱节。</p>
+      </div>
+
+      <div class="step-grid">
+        <article class="step reveal">
+          <h3>架构设计</h3>
+          <p>先定义清楚 Agent 要长期做什么、边界在哪，再决定调度形态与存储方案。</p>
+          <ul>
+            <li>场景与目标拆解</li>
+            <li>调度与状态机设计</li>
+            <li>成本与风险预估</li>
+          </ul>
+        </article>
+        <article class="step reveal">
+          <h3>模型集成</h3>
+          <p>多模型分层接入，按任务难度路由，兼顾效果、延迟与预算。</p>
+          <ul>
+            <li>主 / 备模型路由</li>
+            <li>结构化输出约束</li>
+            <li>失败降级与重试</li>
+          </ul>
+        </article>
+        <article class="step reveal">
+          <h3>工具链开发</h3>
+          <p>把真实业务动作封装成可控工具，配好权限分级与审计埋点。</p>
+          <ul>
+            <li>工具契约与鉴权</li>
+            <li>沙箱与配额隔离</li>
+            <li>高风险动作审批</li>
+          </ul>
+        </article>
+        <article class="step reveal">
+          <h3>部署上线</h3>
+          <p>容器化交付、健康检查与可观测性齐全，交付即可长期运行。</p>
+          <ul>
+            <li>容器化与一键部署</li>
+            <li>日志、指标与告警</li>
+            <li>运维手册与移交</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 范式对标 ============ -->
+  <section class="section section-soft" id="bench">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Paradigm Benchmark</span>
+        <h2>对标 Dot、24h Bot：学其形，更要解其骨</h2>
+        <p>下表是对两类前沿产品范式的公开设计取向观察，以及胖福科技在工程落地时的对应取舍——重点不在"复刻"，而在把可验证的部分真正做进系统。</p>
+      </div>
+
+      <div class="bench-wrap reveal">
+        <div class="bench-scroll">
+          <table class="bench">
+            <thead>
+              <tr>
+                <th>能力维度</th>
+                <th>Dot 范式</th>
+                <th>24h Bot 范式</th>
+                <th class="self">胖福 Always-on</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>运行形态</th>
+                <td>个人记忆伙伴，偏"随时可聊"</td>
+                <td>7×24 后台常驻，主动推进</td>
+                <td class="self">常驻进程 + 事件唤醒，无人值守跨天续跑</td>
+              </tr>
+              <tr>
+                <th>记忆策略</th>
+                <td>长期记忆沉淀用户画像</td>
+                <td>以时间线维持连续性</td>
+                <td class="self">分层记忆 + 链式召回，存算分离独立扩缩</td>
+              </tr>
+              <tr>
+                <th>任务组织</th>
+                <td>以对话流为主</td>
+                <td>以定时 / 周期任务为主</td>
+                <td class="self">工单化状态机，可挂起、可补偿、可转人工</td>
+              </tr>
+              <tr>
+                <th>自主边界</th>
+                <td>偏辅助，重大动作交回用户</td>
+                <td>后台自主，边界较柔性</td>
+                <td class="self">沙箱隔离 + 配额限流 + 高风险审批闸门</td>
+              </tr>
+              <tr>
+                <th>交付形态</th>
+                <td>消费级产品</td>
+                <td>产品化服务</td>
+                <td class="self">可私有化部署的工程化方案与源码交付</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="bench-note">说明：对 Dot、24h Bot 的描述基于其公开产品形态与设计取向的观察性归纳，用于明确工程参照系，不构成对其内部实现的断言。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <h2>需要一个能自己跑下去的 Agent？</h2>
+        <p>无论是个人助理、后台 Bot，还是业务侧的自动化 Agent，都可以从一次架构沟通开始。把场景说清楚，我给你一份能落地的工程方案。</p>
+        <div class="cta-actions">
+          <a class="btn btn-lg btn-onbrand" href="mailto:krisc@163.com">发邮件聊聊</a>
+          <a class="btn btn-lg btn-outline-brand" href="#research">先看研究方向</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark">福</span>
+          <span class="brand-text"><strong>胖福科技</strong><small>PANGFU TECH</small></span>
+        </a>
+        <p>由独立 AI 开发者运营的技术工作室。专注常驻式 Agent（Always-on Agent）体系研发，输出可后台自主推进、跨会话跨天持续运行的智能 Bot 与个人助理方案。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#research">研究方向</a></li>
+          <li><a href="#system">技术体系</a></li>
+          <li><a href="#delivery">交付流程</a></li>
+          <li><a href="#bench">范式对标</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:krisc@163.com">krisc@163.com</a></li>
+          <li><a href="#contact">项目咨询 · 架构评审</a></li>
+          <li><a href="#delivery">私有化部署交付</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 胖福科技 PANGFU TECH · Always-on Agent Engineering</span>
+      <span><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="nofollow">浙 ICP 备 2026028597 号</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var header = document.getElementById('siteHeader');
+  var onScroll = function(){
+    if (window.scrollY > 8) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+  btn.addEventListener('click', function(){ nav.classList.toggle('open'); });
+  nav.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') nav.classList.remove('open');
+  });
+
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+})();
+</script>
 </body>
 </html>
